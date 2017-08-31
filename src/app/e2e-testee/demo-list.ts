@@ -5,6 +5,12 @@ import {JigsawCollapseModule} from "jigsaw/component/collapse/collapse";
 import {JigsawScrollBarModule} from "jigsaw/directive/scrollbar/scrollbar";
 import {AffixUtils} from "jigsaw/core/utils/internal-utils";
 import {navInfo} from './nav-info'
+import {CustomizeAlertDemoComponent} from "./alert/customized/app.component";
+import {AlertInDomDemoComponent} from "./alert/in-dom/app.component";
+import {AlertPopupDemoComponent} from "./alert/popup/app.component";
+import {AlertInDomDemoModule} from "./alert/in-dom/app.module";
+import {AlertPopupDemoModule} from "./alert/popup/app.module";
+import {CustomizeAlertDemoModule} from "./alert/customized/app.module";
 
 @Component({
     selector: 'jigsaw-demo-list',
@@ -33,8 +39,11 @@ const demoListRoutes = [
         component: DemoListComponent,
         children: [
             {
-                path: "alert",
-                loadChildren: "./alert/demo.module#AlertDemoModule"
+                path: "alert/customized", component: CustomizeAlertDemoComponent
+            }, {
+                path: "alert/in-dom", component: AlertInDomDemoComponent
+            }, {
+                path: "alert/popup", component: AlertPopupDemoComponent
             }, {
                 path: "array-collection",
                 loadChildren: "./array-collection/demo.module#ArrayCollectionDemoModule"
@@ -132,7 +141,10 @@ const demoListRoutes = [
         RouterModule.forChild(demoListRoutes),
         CommonModule,
         JigsawCollapseModule,
-        JigsawScrollBarModule
+        JigsawScrollBarModule,
+        AlertInDomDemoModule,
+        AlertPopupDemoModule,
+        CustomizeAlertDemoModule
     ],
     exports: [],
     declarations: [
